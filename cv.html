@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhupesh Singh - Software Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.2rem;
+            color: #764ba2;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            color: #888;
+            font-style: italic;
+        }
+
+        .experience-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .experience-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .education-period {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-school {
+            color: #764ba2;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-grade {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-title::after {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 60px 1rem;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Bhupesh Singh</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bhupesh Singh</h1>
+            <p class="tagline">Software Engineer & Python Developer</p>
+            <p>Highly motivated and detail-oriented Software Engineer with hands-on experience in Python development, API integrations, and cloud-based automation. Currently pursuing Ph.D. in Computer Science at University of Delhi.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/bhupesh-singh-395348196" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div>
+                <div style="width: 250px; height: 250px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);">
+                    <span style="font-size: 80px; color: white; font-weight: bold;">BS</span>
+                </div>
+            </div>
+            <div>
+                <div class="about-text">
+                    <p>I am a highly motivated and detail-oriented Software Engineer with hands-on experience in Python development, API integrations, and cloud-based automation. At Auriss Technologies, I worked on projects outsourced to Akitra (USA), where I developed Python scripts for cybersecurity compliance automation, integrated third-party vendor APIs, and improved system performance through bug identification and optimization.</p>
+                    <br>
+                    <p>Skilled in AWS services such as Lambda, CloudWatch, and Step Functions for building scalable serverless workflows. Strong problem-solving abilities, effective communication skills, and a proven ability to work both independently and in collaborative team environments.</p>
+                    <br>
+                    <p><strong>Interests:</strong> Coding, Graphic Design, IoT, Travelling</p>
+                    <p><strong>Soft Skills:</strong> Public Speaking, People Management</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📍</span> Haldwani, Uttarakhand, India
+                    </div>
+                    <div class="contact-item">
+                        <span>📧</span> bhupeshchuphal@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span> +91 7983356398
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Programming Languages</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>C / C++</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Tools & Frameworks</h3>
+                <ul class="skill-list">
+                    <li>Node.js</li>
+                    <li>Express.js</li>
+                    <li>PostgreSQL</li>
+                    <li>Git</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud & DevOps</h3>
+                <ul class="skill-list">
+                    <li>AWS Lambda</li>
+                    <li>AWS Step Functions</li>
+                    <li>Amazon CloudWatch</li>
+                    <li>Serverless Architecture</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Core Competencies</h3>
+                <ul class="skill-list">
+                    <li>API Integration</li>
+                    <li>Testing & Debugging</li>
+                    <li>Team Collaboration</li>
+                    <li>Software Development</li>
+                    <li>Technical Documentation</li>
+                    <li>Issue Resolution</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h3 class="experience-title">Software Engineer</h3>
+                    <div class="experience-company">Auriss Technologies, Coimbatore</div>
+                </div>
+                <div class="experience-date">December 2022 - March 2025</div>
+            </div>
+            <ul class="experience-list">
+                <li>Integrated third-party APIs into existing applications for enhanced functionality and improved user experience</li>
+                <li>Developed Python scripts to automate data processing tasks for cybersecurity audit reports, reducing manual effort by 60%</li>
+                <li>Implemented serverless architectures with AWS Lambda functions and StepFunctions for efficient data processing, improving scalability and reducing infrastructure costs</li>
+                <li>Monitored resource usage through Amazon CloudWatch dashboards and addressed potential issues before they became critical problems, ensuring 99.9% uptime</li>
+                <li>Utilized version control system Git for source code management in collaborative projects, maintaining code quality and enabling seamless team collaboration</li>
+                <li>Identified and fixed bugs and performance issues in Python applications to ensure optimal functionality and user satisfaction</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-period">2025 - Present</div>
+                <div class="education-degree">Doctor of Philosophy (Ph.D), Computer Science</div>
+                <div class="education-school">University of Delhi, Delhi, India</div>
+            </div>
+            <div class="education-item">
+                <div class="education-period">2021 - 2023</div>
+                <div class="education-degree">Master of Science - Computer Science (M.Sc. C.S)</div>
+                <div class="education-school">D.S.B Campus, Kumaun University, Nainital, Uttarakhand, India</div>
+                <div class="education-grade">CGPA: 7.35</div>
+            </div>
+            <div class="education-item">
+                <div class="education-period">2018 - 2021</div>
+                <div class="education-degree">Bachelor of Science - Computer Science (B.Sc. C.S)</div>
+                <div class="education-school">M.B.G.P.G College, Kumaun University, Haldwani, Uttarakhand, India</div>
+                <div class="education-grade">Percentage: 59.22%</div>
+            </div>
+            <div class="education-item">
+                <div class="education-period">2017 - 2018</div>
+                <div class="education-degree">Intermediate, PCM + Computer Science</div>
+                <div class="education-school">D.A.V Centenary Public School, Haldwani, Uttarakhand, India</div>
+                <div class="education-grade">Percentage: 73%</div>
+            </div>
+            <div class="education-item">
+                <div class="education-period">2015 - 2016</div>
+                <div class="education-degree">High School, Science</div>
+                <div class="education-school">D.A.V Centenary Public School, Haldwani, Uttarakhand, India</div>
+                <div class="education-grade">CGPA: 10</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem;">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <a href="mailto:bhupeshchuphal@gmail.com">bhupeshchuphal@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <h3>📱 Phone</h3>
+                <a href="tel:+917983356398">+91 7983356398</a>
+            </div>
+            <div class="contact-card">
+                <h3>💼 LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/bhupesh-singh-395348196" target="_blank">Connect on LinkedIn</a>
+            </div>
+            <div class="contact-card">
+                <h3>📍 Location</h3>
+                <p>Haldwani, Uttarakhand<br>India - 263139</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bhupesh Singh. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Built with passion and dedication</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .experience-card, .education-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
